@@ -71,7 +71,6 @@ To format the codebase:
 - PrimeVue + PrimeFlex
 - Lodash (deep comparison)
 - SCSS
-- Optional DI via `init(service)`
 
 ---
 
