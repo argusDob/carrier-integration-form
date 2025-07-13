@@ -4,39 +4,6 @@ A Vue 3 + Pinia application for creating and editing carrier integrations, desig
 
 ---
 
-## 📁 Project Structure
-
-src/
-├── api/
-│ └── CarrierIntegrationService.js # Mocked API layer
-├── assets/
-│ ├── styles/
-│ │ └── font.css # Global font-face
-│ └── vue.svg # Logo asset
-├── components/
-│ ├── CarrierIntegrationForm/ # All atomic/molecular form components
-│ │ ├── CancelOrderOptions.vue
-│ │ ├── CarrierInfoSection.vue
-│ │ ├── CarrierModuleConfigPanel.vue
-│ │ ├── CarrierStatusPanel.vue
-│ │ └── PricingOptions.vue
-│ └── layout/
-│ └── shared/ # Shared layout components (e.g. Sidebar)
-├── composables/
-│ └── useFormInputValidator.js # Simple required field validator
-├── mocks/
-│ └── formData.mock.js # Initial mock form data
-├── router/
-│ └── index.js # Vue Router setup
-├── store/
-│ └── carrierIntegrationStore.js # Pinia store with DI service pattern
-├── utilities/
-│ └── constants.js # Shared enums / options
-├── views/
-│ └── CarrierIntegrationFormView.vue # Main page
-├── App.vue
-└── main.js
-
 ## 📍 Routes Overview
 
 The application includes two main routes for handling carrier integration forms:
