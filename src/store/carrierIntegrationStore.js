@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-import isEqual from 'lodash.isequal';
-import transform from 'lodash.transform';
+import { getDeepDifference } from '../utilities/objectUtils';
 import merge from 'lodash.merge';
 
 export const useCarrierIntegrationStore = defineStore('carrierIntegrationStore', () => {
@@ -88,17 +87,6 @@ export const useCarrierIntegrationStore = defineStore('carrierIntegrationStore',
     } catch (err) {
       error.value = err.message || 'Failed to submit';
     }
-  }
-
-  function getDeepDifference(newObj, originalObj) {
-    return transform(newObj, (result, value, key) => {
-      if (!isEqual(value, originalObj[key])) {
-        result[key] =
-          typeof value === 'object' && value !== null && originalObj[key]
-            ? getDeepDifference(value, originalObj[key])
-            : value;
-      }
-    });
   }
 
   function init(carrierApiService) {
