@@ -41,4 +41,5 @@ class CarrierIntegrationService {
   }
 }
 
+//Sigleton
 export const carrierIntegrationService = new CarrierIntegrationService();
