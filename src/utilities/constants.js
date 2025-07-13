@@ -1,10 +1,10 @@
-export const integrationSetValues = Object.freeze([
+export const INTEGRATION_SET_VALUE = Object.freeze([
   { label: 'Server A', value: 'server_a' },
   { label: 'Server B', value: 'server_b' },
   { label: 'Server C', value: 'server_c' },
 ]);
 
-export const moduleConfigSchema = Object.freeze([
+export const MODULE_CONFIG_SCHEMA = Object.freeze([
   {
     key: 'ordering',
     title: 'Ordering',
@@ -37,12 +37,12 @@ export const moduleConfigSchema = Object.freeze([
   },
 ]);
 
-export const pricingOptions = Object.freeze([
+export const PRICING_OPTIONS = Object.freeze([
   { label: 'Basic carrier pricing', value: 'basic' },
   { label: 'ShipitSmarter base tariffs', value: 'shipSmarter' },
 ]);
 
-export const cancelOptions = [
+export const CANCEL_OPTIONS = [
   {
     key: 'email',
     label: 'Email carrier cancellation',

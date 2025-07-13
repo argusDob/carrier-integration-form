@@ -19,7 +19,7 @@
                   :validationErrors="validationErrors"
                 />
                 <CarrierModuleConfigPanel
-                  v-for="mod in moduleConfigSchema"
+                  v-for="mod in MODULE_CONFIG_SCHEMA"
                   :key="mod.key"
                   :title="mod.title"
                   :fields="mod.configFields"
@@ -52,7 +52,7 @@ import PricingOptions from '../components/CarrierIntegrationForm/PricingOptions.
 import CarrierStatusPanel from '../components/CarrierIntegrationForm/CarrierStatusPanel.vue';
 import AsyncStateHandler from '../components/layout/shared/AsyncStateHandler.vue';
 
-import { moduleConfigSchema } from '../utilities/constants';
+import { MODULE_CONFIG_SCHEMA } from '../utilities/constants';
 import { useFormInputValidator } from '../composables/useFormInputValidator';
 
 const carrierIntegrationStore = useCarrierIntegrationStore();

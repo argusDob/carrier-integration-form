@@ -8,7 +8,7 @@
         <Select
           inputId="intergration_set"
           v-model="model.integrationSet"
-          :options="integrationSetValues"
+          :options="INTEGRATION_SET_VALUE"
           optionLabel="label"
           optionValue="value"
           class="w-full surface-100"
@@ -39,7 +39,7 @@
 
 <script setup>
 import { defineModel } from 'vue';
-import { integrationSetValues } from '../../utilities/constants';
+import { INTEGRATION_SET_VALUE } from '../../utilities/constants';
 
 defineProps({
   validationErrors: {

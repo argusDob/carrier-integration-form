@@ -1,7 +1,7 @@
 <template>
   <span class="font-bold">{{ title }}</span>
   <div class="flex flex-row gap-2">
-    <div v-for="option in pricingOptions" :key="option.value">
+    <div v-for="option in PRICING_OPTIONS" :key="option.value">
       <RadioButton
         :inputId="option.value"
         :value="option.value"
@@ -16,7 +16,7 @@
 
 <script setup>
 import { defineModel } from 'vue';
-import { pricingOptions } from '../../utilities/constants';
+import { PRICING_OPTIONS } from '../../utilities/constants';
 
 defineProps({
   title: {
