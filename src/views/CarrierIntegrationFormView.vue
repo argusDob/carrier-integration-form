@@ -104,7 +104,7 @@ async function submit() {
     return;
   }
 
-  carrierIntegrationStore.submitForm();
+  await carrierIntegrationStore.submitForm();
 }
 
 onMounted(async () => {
