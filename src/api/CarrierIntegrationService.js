@@ -23,7 +23,6 @@ class CarrierIntegrationService {
   submitCarrierServiceData(formData) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        console.log(formData);
         if (formData && typeof formData === 'object') {
           if (formData.id === undefined) {
             resolve({ data: formData, message: 'New Data submitted successfully - {POST}' });
