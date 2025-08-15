@@ -24,8 +24,8 @@ jobs:
       - run: npm ci
       - name: Build (preview)
         env:
-        VITE_BASE: ./
-        VITE_FORCE_HASH: '1'
+          VITE_BASE: ./
+          VITE_FORCE_HASH: '1'
         run: |
           npm run build
           cp dist/index.html dist/404.html
@@ -45,4 +45,3 @@ jobs:
         run: |
           echo "🚀 Preview URL: ${{ steps.deployment.outputs.page_url }}"
           echo "🚀 Preview URL: ${{ steps.deployment.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
-        
