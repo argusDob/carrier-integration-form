@@ -2,7 +2,7 @@ name: CI
 
 on:
   pull_request:
-    branches: [ develop, staging, production ]
+    branches: [ develop, staging, main ]
 
 permissions:
   contents: read
@@ -19,7 +19,7 @@ jobs:
           cache: 'npm'
 
       - run: npm ci
-      
+
       - name: Build
         env:
           VITE_BASE: /
