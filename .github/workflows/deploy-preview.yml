@@ -27,8 +27,6 @@ jobs:
         run: |
           npm run build
           cp dist/index.html dist/404.html
-          echo "🚀 Preview URL: ${{ steps.deployment.outputs.page_url }}"
-          echo "🚀 Preview URL: ${{ steps.deployment.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
       - uses: actions/upload-pages-artifact@v3
         with: { path: dist }
 
@@ -40,3 +38,9 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+              
+      - name: Print preview URL
+        run: |
+          echo "🚀 Preview URL: ${{ steps.deployment.outputs.page_url }}"
+          echo "🚀 Preview URL: ${{ steps.deployment.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
+        
