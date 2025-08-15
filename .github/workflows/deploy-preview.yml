@@ -1,8 +1,9 @@
-name: Deploy Production
+name: Deploy Preview
 
 on:
   push:
-    branches: [ main ]
+    branches: [ staging ]
+  pull_request:
 
 permissions:
   contents: read
@@ -10,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages-prod
+  group: pages-preview-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -21,8 +22,8 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20, cache: 'npm' }
       - run: npm ci
-      - name: Build (prod)
-        env: { VITE_BASE: /carrier-integration-form/ }
+      - name: Build (preview)
+        env: { VITE_BASE: / }
         run: |
           npm run build
           cp dist/index.html dist/404.html
@@ -34,7 +35,6 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
