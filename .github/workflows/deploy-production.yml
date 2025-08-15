@@ -22,7 +22,9 @@ jobs:
         with: { node-version: 20, cache: 'npm' }
       - run: npm ci
       - name: Build (prod)
-        env: { VITE_BASE: /carrier-integration-form/ }
+        env:
+          VITE_BASE: ./
+          VITE_FORCE_HASH: '1'    
         run: |
           npm run build
           cp dist/index.html dist/404.html
