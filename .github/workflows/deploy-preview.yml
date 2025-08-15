@@ -23,7 +23,9 @@ jobs:
         with: { node-version: 20, cache: 'npm' }
       - run: npm ci
       - name: Build (preview)
-        env: { VITE_BASE: ./ }
+        env:
+        VITE_BASE: ./
+        VITE_FORCE_HASH: '1'
         run: |
           npm run build
           cp dist/index.html dist/404.html
