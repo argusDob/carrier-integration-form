@@ -23,8 +23,8 @@ jobs:
       - run: npm ci
       - name: Build (prod)
         env:
-        VITE_BASE: ./
-        VITE_FORCE_HASH: '1'        
+          VITE_BASE: ./
+          VITE_FORCE_HASH: '1'    
         run: |
           npm run build
           cp dist/index.html dist/404.html
