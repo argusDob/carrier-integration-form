@@ -87,3 +87,83 @@ To format the codebase:
    ```
 
 > This project **has been tested Node.js version `^20.19.0` or `>=22.12.0`**
+
+## 🚀 CI/CD & Deployment Flow
+
+This project uses **GitHub Actions** with a Git Flow branching strategy.
+
+### Branch Strategy
+
+- **develop** → Integration branch (receives merges from feature branches)
+- **staging** → QA branch (triggers preview deployment)
+- **main** → Production branch (triggers production deployment)
+
+---
+
+### Workflows
+
+#### 1. `ci.yml` — Continuous Integration
+
+**Trigger:** Pull Requests to `develop`, `staging`, or `main`  
+**What it does:**
+
+- Installs dependencies and verifies the project builds successfully
+- (Optional) Runs lint checks and unit tests
+
+**Purpose:** Prevents broken code from entering key branches.
+
+---
+
+#### 2. `deploy-preview.yml` — Preview Deployment (Staging & PRs)
+
+**Trigger:** Push to the `staging` branch or any Pull Request.  
+**What it does:**
+
+- Builds the app with:
+  - `VITE_BASE=./` → ensures assets load correctly from subpaths
+  - `VITE_FORCE_HASH=1` → enables Vue Router hash mode to avoid 404s
+- Generates `404.html` (SPA fallback)
+- Deploys to GitHub Pages under the `github-pages` environment
+- Prints a **Preview URL** in the workflow logs
+
+**Where to find the Preview URL:**
+
+- **Actions tab** → open the run → `deploy` job → “Print preview URL”
+- **Settings → Environments → github-pages** → Recent deployments → _View deployment_
+
+---
+
+#### 3. `deploy-production.yml` — Production Deployment
+
+**Trigger:** Push to the `main` branch  
+**What it does:**
+
+- Builds the app with:
+  - `VITE_BASE=/carrier-integration-form/` → correct subpath for the production site
+  - `VITE_FORCE_HASH=0` → enables history mode (clean URLs)
+- Generates `404.html` (SPA fallback)
+- Deploys to the live GitHub Pages site
+
+**Production URL:**
+
+### Development Flow
+
+1. **Feature development:**
+   - Create a `feature/my-feature` branch
+   - Open a PR → `develop` → CI checks run
+2. **QA:**
+   - Open PR `develop` → `staging`
+   - After merge → preview deployment is available for testing
+3. **Release:**
+   - Open PR `staging` → `main`
+   - After merge → production deployment & GitHub Release (via `release-please`)
+
+---
+
+### Release Management
+
+This project uses [`release-please`](https://github.com/google-github-actions/release-please-action) for automated:
+
+- **Semantic version bump**
+- **Git tag** (e.g. `v1.0.0`)
+- **GitHub Release** with generated changelog
