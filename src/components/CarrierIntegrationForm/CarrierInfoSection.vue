@@ -48,5 +48,13 @@ defineProps({
   },
 });
 
+const filteredIntegrationSet = computed(() => {
+  return INTEGRATION_SET_VALUE.filter(item => item.value !== 'custom');
+});
+
 const model = defineModel();
+
+const isCustomIntegrationSet = computed(() => {
+  return model.value.integrationSet === 'custom';
+});
 </script>
