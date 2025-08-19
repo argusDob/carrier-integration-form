@@ -20,6 +20,9 @@ jobs:
 
       - run: npm ci
 
+      - name: Test
+        run: npm run test:run
+
       - name: Build
         env:
           VITE_BASE: /
